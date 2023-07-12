@@ -18,7 +18,7 @@ pipeline {
                 sh( 'pwd' )
                 sh( 'docker version' )
                 sh( 'ls' ) 
-                sh('docker build -t sample:v1 . --no-cahe')
+                sh('docker build -t sample:v1 . --no-cache')
             }
         }
         stage('docker run') {
