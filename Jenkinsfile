@@ -14,10 +14,17 @@ pipeline {
         }
         stage('docker build') {
             steps {
-                echo "dokcer testing started"
+                echo "stage for building images started"
                 sh( 'pwd' )
                 sh( 'docker version' )
                 sh( 'ls' ) 
+                sh('docker build -t sample:v1 . --no-cahe')
+            }
+        }
+        stage('docker run') {
+            steps {
+                echo "stage for running containers started"
+                sh( 'docker run --name docker-con -d -p 80:80 sample:v1 ' )
             }
         }
     }
