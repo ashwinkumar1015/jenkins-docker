@@ -7,7 +7,11 @@ pipeline {
                 echo 'Hello World from test stage'
             }
         }
-        stage ('git clone')
+        stage ('git clone'){
+            steps {
+                sh ('git --version')
+            }
+        }
         stage('docker build') {
             steps {
                 echo "dokcer testing started"
