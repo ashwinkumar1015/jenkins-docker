@@ -24,6 +24,7 @@ pipeline {
         stage('docker run') {
             steps {
                 echo "stage for running containers started"
+                sh( 'docker rm -f $(docker ps -aq)' )
                 sh( 'docker run --name docker-con -d -p 80:80 sample:v1 ' )
             }
         }
